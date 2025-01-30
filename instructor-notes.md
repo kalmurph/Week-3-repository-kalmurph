@@ -38,7 +38,7 @@ gunzip GCF_000001405.40_GRCh38.p14_cds_from_genomic.fna.gz
 
 module load BLAST
 
-makeblastdb -in GCF_000001405.40_GRCh38.p14_cds_from_genomic.fna -dbtype nucl -out human_cds_db
+makeblastdb -in GCF_000001405.40_GRCh38.p14_genomic.fna -dbtype nucl -out human_cds_db
 
 #Locate unknown sequence with your number
 blastn -query unk.fasta -db human_genome -out results.txt -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore stitle"
