@@ -1,3 +1,5 @@
+https://www.ncbi.nlm.nih.gov/bioproject/59771
+
 Download human genome DNA sequence when FTP link is available
 wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF_000001405.40_GRCh38.p14/GCF_000001405.40_GRCh38.p14_genomic.fna.gz
 
