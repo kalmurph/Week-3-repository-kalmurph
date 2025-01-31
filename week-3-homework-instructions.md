@@ -14,7 +14,7 @@
   ```
 
 ## MAKE SURE YOU HAVE DOWNLOADED THE SUBJECT FILE -- THE HUMAN GENOME
-- List your directory contents (`ls`). You should have `GCF_000001405.40_GRCh38.p14_genomic.fna.gz` if you followed the instructions in class. Some of you should also have the partial `SRR741411_2.fastq.gz`
+- List your directory contents (`ls`). You should have `GCF_000001405.40_GRCh38.p14_genomic.fna.gz` if you followed the instructions in class. Some of you should also have the partial `SRR741411_2.fastq.gz, we will ignore this file from now on.
   ```bash
   ls
   ```
@@ -46,6 +46,8 @@
   Expected output:
   ```
   GCF_000001405.40_GRCh38.p14_genomic.fna
+  GCF_000001405.40_GRCh38.p14_genomic.fna.gz
+
   ```
 
 ## MOVE THE QUERY FILE FROM THE SHARED DIRECTORY TO YOUR PERSONAL STORAGE FOLDER
@@ -59,15 +61,18 @@
   ```
   Expected output:
   ```
-  GCF_000001405.40_GRCh38.p14_genomic.fna unk.fasta
+  GCF_000001405.40_GRCh38.p14_genomic.fna
+  GCF_000001405.40_GRCh38.p14_genomic.fna.gz
+  your-unk.fasta
   ```
 
 ## IT IS TIME TO BLAST
-### Build a BLAST Database
+### Load the required software
 - Load the BLAST software:
   ```bash
   module load BLAST
   ```
+### Build a BLAST Database
 - Use the decompressed human genome file to create a local database:
   ```bash
   makeblastdb -in GCF_000001405.40_GRCh38.p14_genomic.fna -dbtype nucl -out human_genome_db
@@ -78,54 +83,41 @@
   ```
   Expected output:
   ```
-  GCF_000001405.40_GRCh38.p14_genomic.fna unk.fasta
-  human_genome_db.nhr human_genome_db.nin human_genome_db.ndb
-  human_genome_db.not human_genome_db.nsq human_genome_db.ntf human_genome_db.nto
+  GCF_000001405.40_GRCh38.p14_genomic.fna
+  GCF_000001405.40_GRCh38.p14_genomic.fna.gz
+  your-unk.fasta
+  human_genome_db.nhr
+  human_genome_db.nin
+  human_genome_db.ndb
+  human_genome_db.not
+  human_genome_db.nsq
+  human_genome_db.ntf
+  human_genome_db.nto
   ```
 
-### Run the BLAST Search
-- Execute the BLAST search using the query sequence and the human genome database:
-  ```bash
-  blastn -query unk.fasta -db human_genome_db -out results.txt -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore stitle"
-  ```
-  - This command:
-    - Takes the query file (`unk.fasta`) – replace this with your assigned unknown file name.
-    - Creates a file called `results.txt` containing the BLAST results.
-    - Uses output format #6, which provides a tab-separated table with the following headers:
-      ```
-      qseqid  sseqid  pident  length  mismatch  gapopen  qstart  qend  sstart  send  evalue  bitscore  stitle
-      ```
+## Run the BLAST Search
 
-- Confirm that the results were generated:
-  ```bash
-  ls
-  ```
-  Expected output:
-  ```
-  GCF_000001405.40_GRCh38.p14_genomic.fna unk.fasta results.txt
-  human_genome_db.nhr human_genome_db.nin human_genome_db.ndb
-  human_genome_db.not human_genome_db.nsq human_genome_db.ntf human_genome_db.nto
-  ```
+Execute the BLAST search using the query sequence and the human genome database:
 
-- View the results:
-  ```bash
-  cat results.txt
-  ```
-  - The output will be a tab-separated table. Recall the output headers we specified above:
-    ```
-    qseqid  sseqid  pident  length  mismatch  gapopen  qstart  qend  sstart  send  evalue  bitscore  stitle
-    ```
-  - `qseqid` is the query sequence identifier (your unknown sequence).
-  - `sseqid` is the matched sequence identifier from the database.
-  - `pident` is the percentage of identical matches.
-  - `mismatch` shows the number of base differences.
-  - `evalue` indicates the statistical significance of the match (lower is better).
+```bash
+blastn -query your-unk.fasta -db human_genome_db -out results.txt -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore stitle"
+```
+
+### This command:
+- Takes the query file (`unk.fasta`) – replace this with your assigned unknown file name.
+- Creates a file called `results.txt` containing the BLAST results.
+- Uses output format #6, which provides a tab-separated table with the following headers:
+
+| **qseqid**  | **sseqid**  | **pident**  | **length**  | **mismatch**  | **gapopen**  | **qstart**  | **qend**  | **sstart**  | **send**  | **evalue**  | **bitscore**  | **stitle**  |
+|-------------|------------|-------------|-------------|---------------|--------------|-------------|------------|-------------|------------|------------|------------|---------|
+| Query sequence ID (your unknown sequence filename)  | Subject sequence ID from the database (matching reference sequence) | Percentage of identical matches between the query and subject | Length of the alignment | Number of mismatched bases in the alignment | Number of gap openings in the alignment | Start position of the query sequence in the alignment | End position of the query sequence in the alignment | Start position of the subject (reference genome) sequence in the alignment | End position of the subject sequence in the alignment | Expectation value (statistical significance of the match, lower is better) | Score representing the alignment quality (higher is better) | Description of the matching reference sequence |
 
 - Your output will likely contain **multiple hits** because you are blasting against the entire genome. If your query is a coding sequence, **each exon will likely have a hit**.
+- The results file is tab-separated, meaning each row represents a single hit, and when viewed in the terminal, it will not appear as a nicely formatted table but as a list of tab-separated values.
 
 - **Use the first hit** to fill in the BLAST Analysis Handout.
 
 ### **Submit Your Work**
-- Complete the **BLAST Analysis Handout** based on your results.
+- Complete the **BLAST Analysis Handout** parts 1 and 2 based on your results.
 - Submit your handout to the **weekly homework dropbox in Canvas**.
 
