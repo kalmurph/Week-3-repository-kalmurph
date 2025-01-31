@@ -1,4 +1,4 @@
-# OPEN THE TERMINAL, GIT BASH OR POWERSHELL
+## OPEN THE TERMINAL, GIT BASH OR POWERSHELL
 
 ## LOG INTO THE HPC
 - SSH into the HPC:
@@ -10,17 +10,18 @@
 ## GO TO PERSONAL STORAGE DIRECTORY
 - Navigate to your personal storage directory:
   ```bash
-  cd /ocean/projects/agr250001p/jparedesmontero
+  cd /ocean/projects/agr250001p/your-psc-username
   ```
 
 ## MAKE SURE YOU HAVE DOWNLOADED THE SUBJECT FILE -- THE HUMAN GENOME
-- List your directory contents (`ls`). You should have `GCF_000001405.40_GRCh38.p14_genomic.fna.gz` if you followed the instructions in class.
+- List your directory contents (`ls`). You should have `GCF_000001405.40_GRCh38.p14_genomic.fna.gz` if you followed the instructions in class. Some of you should also have the partial `SRR741411_2.fastq.gz`
   ```bash
   ls
   ```
   Expected output:
   ```
   GCF_000001405.40_GRCh38.p14_genomic.fna.gz
+  SRR741411_2.fastq.gz
   ```
 - **(OPTIONAL)** If you do not have the human genome file in your directory, download it using `wget`:
   ```bash
