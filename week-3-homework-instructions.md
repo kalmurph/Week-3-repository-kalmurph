@@ -37,7 +37,7 @@
   ```
 - Decompress the file:
   ```bash
-  gunzip GCF_000001405.40_GRCh38.p14_genomic.fna.gz
+  gunzip -c GCF_000001405.40_GRCh38.p14_genomic.fna.gz
   ```
 - List the directory to confirm you now have the uncompressed file:
   ```bash
