@@ -37,7 +37,7 @@
   ```
 - Decompress the file:
   ```bash
-  gunzip -c GCF_000001405.40_GRCh38.p14_genomic.fna.gz
+  gunzip GCF_000001405.40_GRCh38.p14_genomic.fna.gz
   ```
 - List the directory to confirm you now have the uncompressed file:
   ```bash
@@ -46,8 +46,6 @@
   Expected output:
   ```
   GCF_000001405.40_GRCh38.p14_genomic.fna
-  GCF_000001405.40_GRCh38.p14_genomic.fna.gz
-
   ```
 
 ## MOVE THE QUERY FILE FROM THE SHARED DIRECTORY TO YOUR PERSONAL STORAGE FOLDER
@@ -62,7 +60,6 @@
   Expected output:
   ```
   GCF_000001405.40_GRCh38.p14_genomic.fna
-  GCF_000001405.40_GRCh38.p14_genomic.fna.gz
   your-unk.fasta
   ```
 
@@ -84,7 +81,6 @@
   Expected output:
   ```
   GCF_000001405.40_GRCh38.p14_genomic.fna
-  GCF_000001405.40_GRCh38.p14_genomic.fna.gz
   your-unk.fasta
   human_genome_db.nhr
   human_genome_db.nin
