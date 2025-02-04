@@ -50,3 +50,10 @@
 
     ```bash
     cat /ocean/projects/agr250001p/your-username/download_sra.log
+##IF YOU GET AN SRA CONFIGURATION ISSUE
+
+1. Run
+``` bash
+vdb-config --interactive
+```
+
