@@ -1,0 +1,5 @@
+#!/bin/bash 
+
+print "Hey y'all"
+
+exit
